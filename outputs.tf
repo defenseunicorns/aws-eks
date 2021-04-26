@@ -10,7 +10,7 @@ output "cluster_endpoint" {
 
 output "cluster_certificate_authority" {
   description = "CA for EKS Cluster Endpoint"
-  value = data.aws_eks_cluster.cluster.certificate_authority.0.data
+  value       = data.aws_eks_cluster.cluster.certificate_authority.0.data
 }
 
 output "cluster_security_group_id" {
