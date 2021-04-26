@@ -37,3 +37,8 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = local.cluster_name
 }
+
+output "eks" {
+  description = "output from terraform-aws-module/eks/aws module"
+  value = module.eks
+}
