@@ -29,6 +29,10 @@
 #   ]
 # }
 
+variable "kubernetes_version" {
+  default = "1.19"
+}
+
 variable "region" {
   default     = "us-east-2"
   description = "AWS region"
