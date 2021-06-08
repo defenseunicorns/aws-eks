@@ -45,5 +45,5 @@ output "cluster_name" {
 
 output "eks" {
   description = "output from terraform-aws-module/eks/aws module"
-  value = module.eks
+  value       = module.eks
 }
