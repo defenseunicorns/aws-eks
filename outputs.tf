@@ -52,3 +52,13 @@ output "vpc_id" {
   description = "output from terraform-aws-modules/vpc/aws module"
   value       = module.vpc.vpc_id
 }
+
+output "vpc_public_subnet_ids" {
+  description = "output from terraform-aws-modules/vpc/aws module"
+  value       = module.vpc.public_subnets
+}
+
+output "vpc_private_subnet_ids" {
+  description = "output from terraform-aws-modules/vpc/aws module"
+  value       = module.vpc.private_subnets
+}
