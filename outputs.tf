@@ -47,3 +47,8 @@ output "eks" {
   description = "output from terraform-aws-module/eks/aws module"
   value       = module.eks
 }
+
+output "vpc_id" {
+  description = "output from terraform-aws-modules/vpc/aws module"
+  value       = module.vpc.vpc_id
+}
