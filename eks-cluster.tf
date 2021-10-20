@@ -34,6 +34,7 @@ module "eks" {
 
   worker_additional_security_group_ids = [aws_security_group.all_worker_mgmt.id]
   map_users                            = var.map_users
+  map_roles                            = var.map_roles
 }
 
 data "aws_eks_cluster" "cluster" {
