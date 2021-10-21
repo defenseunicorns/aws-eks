@@ -1,7 +1,3 @@
-# variable "region" {
-#   default = "us-west-2"
-# }
-
 # variable "map_accounts" {
 #   description = "Additional AWS account numbers to add to the aws-auth configmap."
 #   type        = list(string)
@@ -32,12 +28,6 @@
 variable "kubernetes_version" {
   default = "1.19"
 }
-
-variable "region" {
-  default     = "us-east-2"
-  description = "AWS region"
-}
-
 
 variable "cluster_name" {
   type    = string
