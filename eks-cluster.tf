@@ -2,7 +2,7 @@ module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = local.cluster_name
   cluster_version = var.kubernetes_version
-  subnets         = module.vpc.private_subnets
+  subnets         = module.vpc.public_subnets
 
   tags = {
     Environment = "DefenseUnicorns-Dev"
@@ -35,6 +35,7 @@ module "eks" {
   worker_additional_security_group_ids = [aws_security_group.all_worker_mgmt.id]
   map_users                            = var.map_users
   map_roles                            = var.map_roles
+  write_kubeconfig                     = var.write_kubeconfig
 }
 
 data "aws_eks_cluster" "cluster" {
