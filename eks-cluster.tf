@@ -1,12 +1,27 @@
+data "aws_eks_cluster" "eks" {
+  name = module.eks.cluster_id
+}
+
+data "aws_eks_cluster_auth" "eks" {
+  name = module.eks.cluster_id
+}
+
+provider "kubernetes" {
+  host                   = data.aws_eks_cluster.eks.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks.certificate_authority[0].data)
+  token                  = data.aws_eks_cluster_auth.eks.token
+}
+
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
+  version         = "17.22.0"
   cluster_name    = local.cluster_name
   cluster_version = var.kubernetes_version
   subnets         = module.vpc.private_subnets
 
   tags = {
-    Environment = "Leapfrog-Dev"
-    GithubOrg   = "leapfrogai"
+    Environment = "DefenseUnicorns-Dev"
+    GithubOrg   = "defenseunicorns"
   }
 
   vpc_id = module.vpc.vpc_id
@@ -34,6 +49,8 @@ module "eks" {
 
   worker_additional_security_group_ids = [aws_security_group.all_worker_mgmt.id]
   map_users                            = var.map_users
+  map_roles                            = var.map_roles
+  write_kubeconfig                     = var.write_kubeconfig
 }
 
 data "aws_eks_cluster" "cluster" {
