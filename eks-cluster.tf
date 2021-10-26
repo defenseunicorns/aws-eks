@@ -5,8 +5,8 @@ module "eks" {
   subnets         = module.vpc.private_subnets
 
   tags = {
-    Environment = "Leapfrog-Dev"
-    GithubOrg   = "leapfrogai"
+    Environment = var.environment_tag
+    GithubOrg   = var.github_org
   }
 
   vpc_id = module.vpc.vpc_id
